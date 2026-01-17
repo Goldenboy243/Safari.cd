@@ -1,5 +1,6 @@
 import { Home, GraduationCap, Hotel, Building2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLocation } from "wouter";
 
 export type Category = "immobilier" | "etudiant" | "hotel";
 
@@ -8,6 +9,7 @@ interface CategoryTabsProps {
   onChange: (category: Category) => void;
   variant?: "default" | "hero" | "compact";
   className?: string;
+  navigate?: boolean;
 }
 
 const categories = [
@@ -15,19 +17,22 @@ const categories = [
     id: "immobilier" as Category,
     label: "Immobilier",
     icon: Home,
-    description: "Acheter, vendre ou louer"
+    description: "Acheter, vendre ou louer",
+    path: "/biens"
   },
   {
     id: "etudiant" as Category,
     label: "Logement Étudiant",
     icon: GraduationCap,
-    description: "Chambres et colocations"
+    description: "Chambres et colocations",
+    path: "/etudiants"
   },
   {
     id: "hotel" as Category,
     label: "Hôtels & Séjours",
     icon: Hotel,
-    description: "Réservations courte durée"
+    description: "Réservations courte durée",
+    path: "/hotels"
   }
 ];
 
@@ -35,8 +40,18 @@ export default function CategoryTabs({
   activeCategory, 
   onChange, 
   variant = "default",
-  className 
+  className,
+  navigate = true
 }: CategoryTabsProps) {
+  const [, setLocation] = useLocation();
+
+  const handleClick = (category: typeof categories[0]) => {
+    onChange(category.id);
+    if (navigate) {
+      setLocation(category.path);
+    }
+  };
+
   if (variant === "hero") {
     return (
       <div className={cn("inline-flex bg-white/10 backdrop-blur-md rounded-2xl p-1.5", className)}>
@@ -45,7 +60,7 @@ export default function CategoryTabs({
           return (
             <button
               key={category.id}
-              onClick={() => onChange(category.id)}
+              onClick={() => handleClick(category)}
               className={cn(
                 "flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition-all",
                 isActive 
@@ -70,7 +85,7 @@ export default function CategoryTabs({
           return (
             <button
               key={category.id}
-              onClick={() => onChange(category.id)}
+              onClick={() => handleClick(category)}
               className={cn(
                 "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all",
                 isActive 
@@ -94,7 +109,7 @@ export default function CategoryTabs({
         return (
           <button
             key={category.id}
-            onClick={() => onChange(category.id)}
+            onClick={() => handleClick(category)}
             className={cn(
               "flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all min-w-[120px]",
               isActive 
@@ -114,8 +129,18 @@ export default function CategoryTabs({
 export function CategoryChips({ 
   activeCategory, 
   onChange,
-  className 
+  className,
+  navigate = true
 }: Omit<CategoryTabsProps, 'variant'>) {
+  const [, setLocation] = useLocation();
+
+  const handleClick = (category: typeof categories[0]) => {
+    onChange(category.id);
+    if (navigate) {
+      setLocation(category.path);
+    }
+  };
+
   return (
     <div className={cn("flex flex-wrap gap-2", className)}>
       {categories.map((category) => {
@@ -123,7 +148,7 @@ export function CategoryChips({
         return (
           <button
             key={category.id}
-            onClick={() => onChange(category.id)}
+            onClick={() => handleClick(category)}
             className={cn(
               "inline-flex items-center gap-2 px-4 py-2 rounded-full border font-medium text-sm transition-all",
               isActive 

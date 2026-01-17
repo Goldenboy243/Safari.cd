@@ -76,8 +76,8 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
                     <p className="text-muted-foreground" data-testid="text-email">
-                      contact@immo.cd<br />
-                      info@immo.cd
+                      contact@safari.cd<br />
+                      info@safari.cd
                     </p>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ export default function Contact() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="IMMO lubumbashi Location"
+                title="Safari.cd - Kinshasa Location"
                 data-testid="map-location"
               />
             </div>

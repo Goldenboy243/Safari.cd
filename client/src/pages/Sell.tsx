@@ -83,7 +83,7 @@ export default function Sell() {
       <div className="bg-gradient-to-r from-primary to-[#8B5CF6] text-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-20 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6" data-testid="text-page-title">
-            Vendez votre bien avec IMMO
+            Vendez votre bien avec Safari.cd
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
             Bénéficiez de notre expertise pour vendre votre propriété rapidement et au meilleur prix du marché
@@ -110,11 +110,11 @@ export default function Sell() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="text-2xl font-bold mb-6">Pourquoi choisir IMMO ?</h2>
+            <h2 className="text-2xl font-bold mb-6">Pourquoi choisir Safari.cd ?</h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Avec plusieurs années d'expérience sur le marché immobilier de Lubumbashi, 
-                IMMO s'est imposée comme une référence dans la vente de propriétés.
+                Avec plusieurs années d'expérience sur le marché immobilier en RDC, 
+                Safari.cd s'est imposée comme une référence dans la vente de propriétés.
               </p>
               <p>
                 Notre équipe d'experts vous accompagne à chaque étape du processus de vente, 

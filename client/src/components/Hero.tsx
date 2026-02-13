@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, MapPin, Home, Building2, GraduationCap, Hotel, Shield, Users, BadgeCheck } from "lucide-react";
+import { Search, MapPin, Building2, GraduationCap, Hotel, Shield, Users, BadgeCheck } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -11,36 +10,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-type Category = "immobilier" | "etudiant" | "hotel";
-
 export default function Hero() {
-  const [activeCategory, setActiveCategory] = useState<Category>("immobilier");
-
-  const categoryContent = {
-    immobilier: {
-      title: "Trouvez votre propriété idéale",
-      subtitle: "en République Démocratique du Congo",
-      description: "Des milliers de biens vérifiés - Maisons, Appartements, Terrains",
-      searchPlaceholder: "Rechercher par ville, quartier...",
-    },
-    etudiant: {
-      title: "Logements étudiants sécurisés",
-      subtitle: "près de votre université",
-      description: "Chambres et studios vérifiés pour étudiants - Sans arnaque",
-      searchPlaceholder: "Rechercher près d'une université...",
-    },
-    hotel: {
-      title: "Réservez votre hébergement",
-      subtitle: "partout en RDC",
-      description: "Hôtels, auberges et locations courte durée",
-      searchPlaceholder: "Où allez-vous ?",
-    },
-  };
-
-  const content = categoryContent[activeCategory];
-
   return (
-    <section className="relative min-h-[600px] md:min-h-[700px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900">
+    <section className="relative min-h-[520px] md:min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -48,71 +20,32 @@ export default function Hero() {
         }} />
       </div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-20">
-        {/* Category Tabs */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex bg-white/10 backdrop-blur-sm rounded-full p-1.5">
-            <button
-              onClick={() => setActiveCategory("immobilier")}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
-                activeCategory === "immobilier"
-                  ? "bg-white text-emerald-800 shadow-lg"
-                  : "text-white/80 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              <Home className="h-4 w-4" />
-              Immobilier
-            </button>
-            <button
-              onClick={() => setActiveCategory("etudiant")}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
-                activeCategory === "etudiant"
-                  ? "bg-white text-amber-700 shadow-lg"
-                  : "text-white/80 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              <GraduationCap className="h-4 w-4" />
-              Étudiants
-            </button>
-            <button
-              onClick={() => setActiveCategory("hotel")}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
-                activeCategory === "hotel"
-                  ? "bg-white text-blue-700 shadow-lg"
-                  : "text-white/80 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              <Hotel className="h-4 w-4" />
-              Hôtels
-            </button>
-          </div>
-        </div>
-
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-20">
         {/* Hero Content */}
         <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-            {content.title}<br />
-            <span className="text-emerald-300">{content.subtitle}</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+            Trouvez votre propriété idéale<br />
+            <span className="text-emerald-300">en République Démocratique du Congo</span>
           </h1>
-          <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-            {content.description}
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+            Des milliers de biens vérifiés - Maisons, Appartements, Terrains
           </p>
         </div>
 
         {/* Search Box */}
         <div className="max-w-4xl mx-auto mb-10">
           <div className="bg-white rounded-2xl shadow-2xl p-4 md:p-6">
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-col md:flex-row gap-3 md:gap-4">
               <div className="flex-1 relative">
                 <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <Input 
-                  placeholder={content.searchPlaceholder}
-                  className="pl-12 h-14 text-lg border-gray-200 focus-visible:ring-emerald-500 rounded-xl"
+                  placeholder="Rechercher par ville, quartier..."
+                  className="pl-12 h-12 md:h-14 text-base md:text-lg border-gray-200 focus-visible:ring-emerald-500 rounded-xl"
                 />
               </div>
               
               <Select defaultValue="kinshasa">
-                <SelectTrigger className="w-full md:w-[180px] h-14 border-gray-200 rounded-xl">
+                <SelectTrigger className="w-full md:w-[180px] h-12 md:h-14 border-gray-200 rounded-xl">
                   <SelectValue placeholder="Ville" />
                 </SelectTrigger>
                 <SelectContent>
@@ -126,7 +59,7 @@ export default function Hero() {
 
               <Button 
                 size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white h-14 px-8 gap-2 rounded-xl text-lg"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white h-12 md:h-14 px-8 gap-2 rounded-xl text-base md:text-lg"
               >
                 <Search className="h-5 w-5" />
                 Rechercher
